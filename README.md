@@ -9,5 +9,5 @@ Expected Output: "Expensive Movie" ~completed
 Describe: Ticket()
 
 Test: "It should add an id to each movie"
-Code:
-Expected Output:
+Code: movie1
+Expected Output: Movie {title: Expensivé Movie", time: "matinee", age :"allages" id: 1} ~ completed
