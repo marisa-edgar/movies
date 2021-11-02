@@ -11,3 +11,13 @@ Describe: Ticket()
 Test: "It should add an id to each movie"
 Code: movie1
 Expected Output: Movie {title: Expensivé Movie", time: "matinee", age :"allages" id: 1} ~ completed
+
+Test: "It should retreive a movie based off of the id"
+code: tickets.findMovie(1)
+expected output: ("title: Expensivé Movie", "time: matinee", "age: allages" "id: 1") 
+
+Describe: modifyCost
+
+Test: "It should manipulate price depending on user input"
+Code: modifyCost
+Expected Output: price != 10
