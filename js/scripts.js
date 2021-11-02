@@ -24,46 +24,55 @@ function Ticket(title, time, age) {
   this.title = title;
   this.time = time;
   this.age = age;
+  this.price = 10;
 }
 //Base Price : 10(senior/child 8) Matinee Price: 7(senior/child 5)
 Ticket.prototype.modifyCost = function() {
-  let price = 10;
   if (this.title === "expensive") {
-    price += 5;
+    this.price += 5;
   } else {
-    price;
+    this.price;
   }
 
   if (this.time === "evening") {
-    price;
+    this.price;
   } else if (this.time === "matinee") {
-    price -= 3;
+    this.price -= 3;
   }
 
   if (this.age === "child" || this.age === "senior") {
-    price -= 2;
+    this.price -= 2;
   } else {
-    price;
+    this.price;
   }
-  return price;
+  return this.price;
 };
 
-//let movie1 = new Movie ("Expensivé Movie", "matinee", "allages")
+function showTitleAndPrice(userTicket) {
+  console.log(userTicket)
+  $("#ticket-stub").show();
+  $(".title").html(userTicket.title);
+  $(".time").html(userTicket.time);
+  $(".age").html(userTicket.age);
+  $(".cost").html(userTicket.price);
+}
 
-let ticket1 = new Ticket ("expensive", "evening", "child");
-let ticket2 = new Ticket ("Innapropriate Movie", "matinee", "adult");
-let ticket3 = new Ticket ("Everyone Movie", "matinee", "senior");
-let ticket4 = new Ticket ("Action Movie", "evening", "adult");
 
-$("form#movie-select").submit(function(event) {
-  event.preventDefault();
-  let movieTitle = $("input:radio[name=title]:checked").val();
-  let movieTime = $("input:radio[name=time]:checked").val();
-  let movieAge = $("input:radio[name=age]:checked").val();
-  let userTicket = new Ticket(movieTitle, movieTime, movieAge);
+$(document).ready(function(){
+  $("form#movie-select").submit(function(event) {
+    event.preventDefault();
+    let movieTitle = $("input:radio[name=title]:checked").val();
+    let movieTime = $("input:radio[name=time]:checked").val();
+    let movieAge = $("input:radio[name=age]:checked").val();
+    $("input:radio[name=title]:checked").val("");
+    $("input:radio[name=time]:checked").val("");
+    $("input:radio[name=age]:checked").val("");
+    let userTicket = new Ticket(movieTitle, movieTime, movieAge);
+    showTitleAndPrice(userTicket);
+    $("#movie-select").hide();
+  });
+})
 
-  $("#movie-select").hide();
-});
 
 //let tickets = new Tickets();
 
@@ -75,26 +84,9 @@ $("form#movie-select").submit(function(event) {
 //function modifyCost()
 
 
-
-/*START with Age. Reveal movies revelant to user input.
-
-
 //tickets.findMovie(1);
 
 
 
 
 //element.addMovie(movie1);
-
-/*title
-[expensivemovie]
-[kidsmovie]
-[maturemovie]
-
-time
-[matinee]
-[evening]
-
-age
-[allages]
-[18+]*/
