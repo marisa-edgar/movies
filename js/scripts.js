@@ -28,19 +28,20 @@ function Ticket(title, time, age) {
 }
 //Base Price : 10(senior/child 8) Matinee Price: 7(senior/child 5)
 Ticket.prototype.modifyCost = function() {
-  if (this.title === "expensive") {
+  if (this.title === "Expensive Movie") {
     this.price += 5;
   } else {
     this.price;
   }
-
-  if (this.time === "evening") {
-    this.price;
-  } else if (this.time === "matinee") {
+  
+ 
+  if (this.time === "Matinee") {
     this.price -= 3;
+  } else {
+    this.price;
   }
 
-  if (this.age === "child" || this.age === "senior") {
+  if (this.age === "Child" || this.age === "Senior") {
     this.price -= 2;
   } else {
     this.price;
@@ -49,7 +50,7 @@ Ticket.prototype.modifyCost = function() {
 };
 
 function showTitleAndPrice(userTicket) {
-  console.log(userTicket)
+  //console.log(userTicket)
   $("#ticket-stub").show();
   $(".title").html(userTicket.title);
   $(".time").html(userTicket.time);
@@ -68,6 +69,7 @@ $(document).ready(function(){
     $("input:radio[name=time]:checked").val("");
     $("input:radio[name=age]:checked").val("");
     let userTicket = new Ticket(movieTitle, movieTime, movieAge);
+    userTicket.modifyCost();
     showTitleAndPrice(userTicket);
     $("#movie-select").hide();
   });
